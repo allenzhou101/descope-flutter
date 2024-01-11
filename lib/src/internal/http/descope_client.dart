@@ -237,6 +237,7 @@ class DescopeClient extends HttpClient {
   }
 
   Future<OAuthNativeStartServerResponse> oauthNativeStart(OAuthProvider provider, SignInOptions? options) {
+    print("Starting oauth native");
     return post('auth/oauth/native/start', OAuthNativeStartServerResponse.decoder, headers: authorization(options?.refreshJwt), body: {
       'provider': provider.name,
       'loginOptions': options?.toMap(),
