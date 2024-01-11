@@ -238,6 +238,7 @@ class DescopeClient extends HttpClient {
 
   Future<OAuthNativeStartServerResponse> oauthNativeStart(OAuthProvider provider, SignInOptions? options) {
     print("Starting oauth native");
+    print(options?.refreshJwt);
     return post('auth/oauth/native/start', OAuthNativeStartServerResponse.decoder, headers: authorization(options?.refreshJwt), body: {
       'provider': provider.name,
       'loginOptions': options?.toMap(),
@@ -308,6 +309,9 @@ class DescopeClient extends HttpClient {
       };
 
   Map<String, String> authorization(String? value) {
+    print('Authorization: Bearer');
+    print(value);
+    print(config.projectId);
     return value != null ? {'Authorization': 'Bearer ${config.projectId}:$value'} : {};
   }
 }
