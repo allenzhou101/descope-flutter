@@ -124,6 +124,7 @@ String? errorDescriptionFromCode(int statusCode) {
   if (statusCode >= 200 && statusCode <= 299) {
     return null;
   }
+  print("HTTP Error: $statusCode");
   switch (statusCode) {
     case 400:
       return 'The request was invalid';
