@@ -47,6 +47,7 @@ class OAuth implements DescopeOAuth {
 
   Future<Map<String, dynamic>> callNative(String clientId, String nonce, bool implicit) async {
     dynamic result;
+    print("Calling native")
     try {
       result = await _mChannel.invokeMethod('oauthNative', {
         'clientId': clientId,
